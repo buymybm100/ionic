@@ -1,0 +1,77 @@
+<ion-content class="speaker-detail">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons *ngIf="speaker" slot="end">
+        <ion-button (click)="openContact(speaker)">
+          <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
+        </ion-button>
+        <!--
+        <ion-button (click)="openSpeakerShare(speaker)">
+          <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
+        </ion-button>
+        -->
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="speaker-background">
+    <img [src]="speaker?.profilePic" [alt]="speaker?.name">
+    <h2>{{speaker?.name}}</h2>
+  </div>
+
+
+  <ion-list lines="none" class="chat">
+    <ion-item slot="start" class="message-other"
+        routerLink="/app/tabs/speakers/session/{{speaker?.sessions[0].id}}">
+      <ion-chip>
+        <ion-icon name="mail-unread-outline"></ion-icon>
+        <ion-label>{{newPromiseMsg}} : <h4>{{speaker?.sessions[0].name}}</h4></ion-label>
+      </ion-chip>
+    </ion-item>
+
+    <ion-item  lines="none" class="message-mine">
+        <div slot="end">
+           <h4>Jon</h4>
+           <ion-chip>
+             <ion-label>Hey, how's the Promise going?</ion-label>
+           </ion-chip>
+           <p class="timestamp">10:20am</p>
+        </div>
+    </ion-item>
+    <ion-item  lines="none" class="message-other">
+        <div slot="start">
+          <h4>{{getFirstName(speaker)}}</h4>
+          <ion-chip>
+            <ion-label>I'm nearly done!</ion-label>
+          </ion-chip>
+          <p class="timestamp">10:21am</p>
+        </div>
+    </ion-item>
+    <ion-item slot="start" class="message-other"
+      routerLink="/app/tabs/speakers/session/{{speaker?.sessions[1].id}}">
+      <ion-chip>
+        <ion-icon name="mail-unread-outline"></ion-icon>
+        <ion-label>{{newPromiseMsg}} : <h4>{{speaker?.sessions[1].name}}</h4></ion-label>
+      </ion-chip>
+    </ion-item>
+    <ion-item slot="start" class="message-mine">
+        <div slot="end">
+           <h4>Jon</h4>
+           <ion-chip>
+             <ion-label>That is great! Can't wait to celebrate with dinner!</ion-label>
+           </ion-chip>
+           <p class="timestamp">10:23am</p>
+        </div>
+    </ion-item>
+    <ion-item slot="start" routerLink="/app/tabs/speakers/session/{{speaker?.sessions[0].id}}">
+      <ion-chip color="success">
+        <ion-icon name="checkbox-outline"></ion-icon>
+        <ion-label>{{getFirstName(speaker)}} has done a Promise! <h4>{{speaker?.sessions[0].name}}</h4></ion-label>
+      </ion-chip>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

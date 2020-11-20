@@ -1,0 +1,22 @@
+
+
+#outer {
+  height:100%;
+}
+
+#container {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  //-webkit-animation: rotation 2s infinite linear;
+
+  .chartLink {
+    text-decoration:none !important;
+  }
+  .chartTitle {
+    font-size:16px;
+  }
+}

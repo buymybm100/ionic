@@ -1,0 +1,46 @@
+.help{
+  position:absolute;
+  top:40px;
+  left:12px;
+  color:white;
+  font-size:30px;
+  z-index:10;
+}
+
+ion-slides {
+    --bullet-background: red;
+    --bullet-background-active: var(--ion-color-dark);;
+}
+
+.slide-background {
+  position: relative;
+  display: flex;
+
+  padding-top: var(--ion-safe-area-top);
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: calc(250px + var(--ion-safe-area-top));
+  background: center / cover url(/assets/img/speaker-background.png) no-repeat;
+
+  &.green {
+    background: center / cover url(/assets/img/speaker-background-green.png) no-repeat;
+  }
+}
+
+.slide-background img {
+  border-radius: 50%;
+  width: 50px;
+  margin-top: calc(-1 * var(--ion-safe-area-top));
+}
+
+
+.slide-background h2 {
+  position: absolute;
+
+  bottom: 20px;
+
+  color: white;
+}

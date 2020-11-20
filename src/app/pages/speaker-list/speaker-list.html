@@ -1,0 +1,79 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title *ngIf="!showSearchbar">Groups & Buddies</ion-title>
+    <ion-searchbar *ngIf="showSearchbar" showCancelButton="always"  (ionChange)="updateSchedule()" (ionCancel)="showSearchbar = false" placeholder="Search"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!showSearchbar" (click)="showSearchbar = true">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button  *ngIf="!showSearchbar" fill="clear" slot="end" (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Groups & Buddies</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let speaker of speakers">
+        <ion-card class="speaker-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none" class="speaker-item" routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}">
+              <ion-avatar slot="start">
+                <img [src]="speaker.profilePic" [alt]="speaker.name + ' profile picture'">
+              </ion-avatar>
+              <ion-label>
+                <h2>{{speaker.name}}</h2>
+                <p>{{speaker.title}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+<!--
+(ionDrag)="dragging($event, session)"
+<ion-item-options (ionSwipe)="fullySwiped($event,session)">
+-->
+          <ion-card-content>
+            <ion-list #sessionList lines="none">
+              <ion-item-sliding *ngFor="let session of speaker.sessions"
+                #slidingItem
+                (ionDrag)="dragging($event, session)"
+                (ionSwipe)="fullySwiped($event,session)"
+                [hidden]="session.hide">
+
+                <ion-item detail="false"
+                  routerLink="/app/tabs/speakers/session/{{session.id}}">
+                  <ion-note slot="start" color="primary">
+                    <ion-button (click)="ack($event, session)" fill="clear">
+                      <ion-icon color="medium" [name]="getIcon(session)"></ion-icon>
+                    </ion-button>
+                  </ion-note>
+                  <ion-label>{{session.name}}</ion-label>
+                </ion-item>
+                <ion-item-options>
+                  <ion-item-option expandable color="light" [disabled]="!session.ack">
+                    <ion-label *ngIf="session.ack">Archive</ion-label>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+
+              <ion-item>
+                <ion-fab-button slot="end" size="small" color="light"
+                    routerLink="/signup/promise">
+                    <ion-icon color="medium" name="create-outline"></ion-icon>
+                </ion-fab-button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

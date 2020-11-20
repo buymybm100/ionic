@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+    <ion-button  fill="clear" slot="end" (click)="presentPopover($event)">
+      <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list inset>
+    <div class="speaker-background">
+      <img [src]="speaker?.profilePic" [alt]="speaker?.name">
+      <h2>{{speaker?.name}}</h2>
+    </div>
+
+    <ion-item detail button>
+      <ion-label>
+        Archived Promises
+      </ion-label>
+    </ion-item>
+
+    <ion-item button (click)="openTutorial()">
+      <ion-label>
+        Tutorial
+      </ion-label>
+    </ion-item>
+
+    <ion-item button routerLink="/app/tabs/about/privacy">
+      <ion-label>
+        Privacy Policy
+      </ion-label>
+    </ion-item>
+
+      <ion-item button routerLink="/app/tabs/about/terms">
+      <ion-label>
+        Terms & Conditions
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,45 @@
+<div class="tinder" [hidden]="!cards.length">
+
+  <div class="tinder--status">
+      <div [style.opacity]="crossVisible? '1':'0'">
+          <ion-icon color="medium" name="close-outline"></ion-icon>
+      </div>
+
+      <div [style.opacity]="heartVisible? '1':'0'">
+        <ion-label>
+          <p>
+            <ion-icon name="heart-outline"></ion-icon>
+          </p>
+          <ion-note>Acknowledged</ion-note>
+        </ion-label>
+      </div>
+ </div>
+
+  <div class="tinder--cards" (pan)="handlePan($event)" (panend)="handlePanEnd($event)">
+
+      <div #tinderCard class="tinder--card" (transitionend)="handleShift()"
+          *ngFor="let card of cards; let i = index"
+          [ngStyle]="{ zIndex: cards.length - i, transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)' }">
+
+          <img #tinderCardImage [src]="card.img" (load)="tinderCardImage.style.opacity = 1">
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+
+      </div>
+
+  </div>
+
+
+  <div class="tinder--buttons">
+
+    <ion-button fill="clear" (click)="userClickedButton($event, false)">
+        <ion-icon  name="close-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button fill="clear" (click)="userClickedButton($event, true)">
+        <ion-icon color="warning" name="heart-outline"></ion-icon>
+    </ion-button>
+
+  </div>
+
+</div>

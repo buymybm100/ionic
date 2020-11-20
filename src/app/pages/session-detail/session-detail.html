@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon *ngIf="!isFavorite" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="isFavorite" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <ion-button (click)="shareSession()">
+        <ion-icon slot="icon-only" name="share-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="session" class="ion-padding">
+    <h1>{{session.name}}</h1>
+    <span *ngFor="let track of session?.tracks" [class]="'session-track-'+track.toLowerCase()">{{track}}</span>
+    <p>{{session.description}}</p>
+    <ion-text color="medium">
+      {{session.timeStart}} &ndash; {{session.timeEnd}}
+      <!--
+      <br /> {{session.location}}
+      -->
+    </ion-text>
+  </div>
+
+  <ion-list>
+    <ion-item (click)="sessionClick('edit')" button>
+      <ion-label color="primary">Edit</ion-label>
+      <ion-icon slot="end" color="primary" size="small" name="create-outline"></ion-icon>
+    </ion-item>
+  <ion-list>
+  <ion-radio-group *ngIf="session" [value]="session.location">
+    <ion-list-header>
+      <ion-label>Update Status</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>In-Progress</ion-label>
+      <ion-radio slot="start" value="Active"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-icon [name]="session.location==='Done' ? 'checkbox':'checkbox-outline'"></ion-icon>
+      <ion-note slot="end" color="dark">Mark as Done</ion-note>
+      <ion-radio slot="start" value="Done"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-icon [name]="session.location==='Not Done' ? 'flag':'flag-outline'"></ion-icon>
+      <ion-note slot="end" color="dark">Not Done</ion-note>
+      <ion-radio slot="start" value="Not Done"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-icon [name]="session.location==='Revoked' ? 'hand-left':'hand-left-outline'"></ion-icon>
+      <ion-note slot="end" color="dark">Revoked</ion-note>
+      <ion-radio slot="start" value="Revoked"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+<ion-list>
+  <ion-list-header>
+    <ion-label>Do More</ion-label>
+  </ion-list-header>
+    <ion-item (click)="sessionClick('Poke')" button detail>
+      <ion-label color="primary">Request Update</ion-label>
+    </ion-item>
+    <ion-item (click)="sessionClick('add to calendar')" button>
+      <ion-label color="primary">Add to Calendar</ion-label>
+      <ion-icon slot="end" color="primary" size="small" name="calendar-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+
+  </ion-list>
+</ion-content>

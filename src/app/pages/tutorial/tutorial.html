@@ -1,0 +1,105 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false">
+    <ion-slide>
+      <img src="assets/img/slides/logo-large.png" class="slide-image" />
+      <h2 class="slide-title">
+        Welcome to
+        <b>Integritometer</b>
+      </h2>
+      <p>
+        Integritometer is the app that keeps your word alive.
+        Do you find it challenging to keep track of all your important promises,
+        commitments, and things to do, scattered in multiple places?
+        Maybe you are a loving friend, family member, colleague or coach.
+        What about all the things other people who matter to you said they would do?
+        Dive in and have a look!
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/slides/ws1.png" class="slide-image" />
+      <h2 class="slide-title">
+        Make a Promise and Keep it
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit malesuada est nibh, non congue nisi sagittis at.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slides/ws2.png" class="slide-image" />
+      <h2 class="slide-title">
+        Describe the Promise and set a deadline
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit malesuada est nibh, non congue nisi sagittis at.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slides/ws3.png" class="slide-image" />
+      <h2 class="slide-title">
+        Draft promises for later
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit malesuada est nibh, non congue nisi sagittis at.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slides/ws4.png" class="slide-image" />
+      <h2 class="slide-title">
+        Search for Contacts to share with
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit malesuada est nibh, non congue nisi sagittis at.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slides/ws5.png" class="slide-image" />
+      <h2 class="slide-title">
+        Schedule actions
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit malesuada est nibh, non congue nisi sagittis at.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slides/ws6.png" class="slide-image" />
+      <h2 class="slide-title">
+        Swipe left to reveal actions
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit malesuada est nibh, non congue nisi sagittis at.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slides/ws7.png" class="slide-image" />
+      <h2 class="slide-title">
+        Chat to keep in touch
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit malesuada est nibh, non congue nisi sagittis at.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slides/ica-slidebox-img-4.png" class="slide-image" />
+      <h2 class="slide-title">Ready to Play?</h2>
+      <ion-button fill="clear" (click)="startApp()">
+        Continue
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

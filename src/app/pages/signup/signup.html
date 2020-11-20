@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref">Cancel</ion-back-button>
+    </ion-buttons>
+    <!--
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">Cancel</ion-button>
+    </ion-buttons>
+    -->
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-chip class="help" (click)="toggle()">
+    <ion-label color="secondary">This {{currType}} is for ...</ion-label>
+    <!--
+    <ion-label [color]="currType=='Promise' ? 'secondary':'warning'">This {{currType}} is for ...</ion-label>
+    -->
+  </ion-chip>
+
+      <ion-slides #slides pager="true">
+        <ion-slide  class="slide-background">
+          <img src="assets/img/flaticons/man-5.png" alt="speaker background">
+          <h2>Jon</h2>
+        </ion-slide>
+        <ion-slide  class="slide-background">
+          <img src="assets/img/flaticons/girl-4.png" alt="speaker background">
+          <h2>Rachel</h2>
+        </ion-slide>
+        <ion-slide  class="slide-background">
+          <img src="assets/img/flaticons/girl-2.png" alt="speaker background">
+          <h2>Kate</h2>
+        </ion-slide>
+        <ion-slide  class="slide-background">
+          <img src="assets/img/flaticons/boy-2.png" alt="speaker background">
+          <h2>Bob</h2>
+        </ion-slide>
+      </ion-slides>
+
+  <form #signupForm="ngForm" novalidate>
+
+    <ion-list lines="full" class="ion-no-margin">
+      <ion-item lines="none">
+        <ion-label position="floating">Describe the {{currType}}...</ion-label>
+        <ion-textarea [(ngModel)]="signup.desc" name="desc" #desc="ngModel" required></ion-textarea>
+      </ion-item>
+      <ion-text color="danger">
+         <p [hidden]="desc.valid || submitted == false" class="ion-padding-start">
+           What's the {{currType}} ?
+         </p>
+       </ion-text>
+
+       <ion-item  lines="none">
+         <ion-label position="floating">By When</ion-label>
+         <ion-datetime displayFormat="DDDD MMM D, YYYY"
+              [(ngModel)]="signup.bywhen" name="bywhen" #bywhen="ngModel" required
+              min="2020" max="2050" value="2020-12-25"></ion-datetime>
+
+       </ion-item>
+         <ion-text color="danger">
+          <p [hidden]="bywhen.valid || submitted == false" class="ion-padding-start">
+            A deadline is required
+          </p>
+        </ion-text>
+<!--
+        <ion-item>
+          <ion-label>DDDD MMM D, YYYY</ion-label>
+          <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005" max="2016" value="2008-09-02"></ion-datetime>
+        </ion-item>
+        -->
+
+     </ion-list>
+
+    <div class="ion-padding">
+      <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Create</ion-button>
+    </div>
+  </form>
+
+</ion-content>

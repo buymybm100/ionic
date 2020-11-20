@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{textTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-text [innerHtml]="textValue">
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-text [innerHtml]="textDate">
+    </ion-text>
+  </ion-item>
+</ion-content>
